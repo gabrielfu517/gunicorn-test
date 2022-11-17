@@ -2,12 +2,14 @@ import os
 import requests
 import json
 import shopify
+import random
+import string
 
 from datetime import date
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from flask_apscheduler import APScheduler
-from helpers import *
+
 
 # Configure application
 app = Flask(__name__)
@@ -17,6 +19,25 @@ scheduler = APScheduler()
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+def get_all_resources(resource):
+    page_info = str()
+    resources = list()
+    while True:
+        resources.extend(resource.find(limit=250, page_info=page_info))
+        cursor = shopify.ShopifyResource.connection.response.headers.get('Link')
+        if 'next' in cursor:
+            page_info = cursor.split(';')[-2].strip('<>').split('page_info=')[1]
+        else:
+            break
+    return resources
+
+
+def get_random_string(length):
+    # choose from all lowercase letter
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
 
 @scheduler.task('interval', id='sync_wishlist_cron', seconds=86400)
 def sync_cron():
