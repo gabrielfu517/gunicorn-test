@@ -9,14 +9,15 @@ from flask_session import Session
 from flask_apscheduler import APScheduler
 from helpers import *
 
+class Config:
+    SCHEDULER_API_ENABLED = True
+
 # Configure application
 app = Flask(__name__)
 
 # Flask hook for cron job
 scheduler = APScheduler()
 
-# Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @scheduler.task('interval', id='sync_wishlist_cron', seconds=60)
 def sync_cron():
