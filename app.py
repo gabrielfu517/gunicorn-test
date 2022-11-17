@@ -18,7 +18,7 @@ scheduler = APScheduler()
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-@scheduler.task('interval', id='sync_wishlist_cron', seconds=86400)
+@scheduler.task('interval', id='sync_wishlist_cron', seconds=60)
 def sync_cron():
 
     # Get customer list
