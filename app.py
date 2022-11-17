@@ -17,9 +17,6 @@ app = Flask(__name__)
 # Flask hook for cron job
 scheduler = APScheduler()
 
-# Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-
 def get_all_resources(resource):
     page_info = str()
     resources = list()
