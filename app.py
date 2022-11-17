@@ -6,6 +6,7 @@ import shopify
 from datetime import date
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
+from flask_apscheduler import APScheduler
 from helpers import *
 
 # Configure application
