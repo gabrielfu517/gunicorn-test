@@ -75,5 +75,4 @@ def sync_cron():
 scheduler.init_app(app)
 scheduler.start()
 
-if __name__ == '__main__':
-    app.run()
+app.run()
