@@ -9,9 +9,6 @@ from flask_session import Session
 from flask_apscheduler import APScheduler
 from helpers import *
 
-class Config:
-    SCHEDULER_API_ENABLED = True
-
 # Configure application
 app = Flask(__name__)
 
