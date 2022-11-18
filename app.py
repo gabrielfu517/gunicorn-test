@@ -3,6 +3,7 @@ import requests
 import json
 import shopify
 
+
 from datetime import date
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
@@ -75,4 +76,4 @@ def sync_cron():
 scheduler.init_app(app)
 scheduler.start()
 
-app.run()
+app.run(host='0.0.0.0', port=8080)
