@@ -65,7 +65,7 @@ def sync_cron():
 
 
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(sync_cron,'interval',minutes=1)
+sched.add_job(sync_cron,'interval',minutes=1440)
 sched.start()
 
 # Configure application
