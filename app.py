@@ -14,7 +14,7 @@ from helpers import *
 def sync_cron():
 
     # Get customer list
-    shop_url = "https://e9d82dadea8353e21e5788f4e3cfde61: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@barkmall.myshopify.com/admin"
+    shop_url = "https://99425ca3f13c0c64458b468f1e362e40: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@barkmall.myshopify.com/admin"
     shopify.ShopifyResource.set_site(shop_url)
     shop = shopify.Shop.current
 
